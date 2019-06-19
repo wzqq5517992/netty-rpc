@@ -2,13 +2,15 @@ package com.wzq.rpc.protocol;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**自定义传送协议层
  * @author wzq.Jolin
  * @company none
  * @create 2019-06-18 19:00
  */
 @Data
-public class InvokerProtocol {
+public class InvokerProtocol  implements Serializable {
     /**
      * 类名
      */

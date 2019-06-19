@@ -17,6 +17,12 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
+
+/**客户端代理类
+ * @author wzq.Jolin
+ * @company none
+ * @create 2019-06-18 19:00
+ */
 public class RpcProxy {  
 	
 	public static <T> T create(Class<?> clazz){
@@ -29,9 +35,6 @@ public class RpcProxy {
         return result;
     }
 
-	/**
-	 * 将本地调用，通过代理的形式变成网络调用
-	 */
 	private static class MethodProxy implements InvocationHandler {
 		private Class<?> clazz;
 		public MethodProxy(Class<?> clazz){
@@ -70,7 +73,6 @@ public class RpcProxy {
 			msg.setParames(method.getParameterTypes());
 
 			final RpcProxyHandler consumerHandler = new RpcProxyHandler();
-
 			EventLoopGroup group = new NioEventLoopGroup();
 			try {
 				Bootstrap b = new Bootstrap();
@@ -100,6 +102,7 @@ public class RpcProxy {
 							}
 						});
 
+				//发送网络调用
 				ChannelFuture future = b.connect("localhost", 8080).sync();
 				future.channel().writeAndFlush(msg).sync();
 				future.channel().closeFuture().sync();
