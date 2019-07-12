@@ -4,6 +4,7 @@ package com.wzq.rpc.consumer;
 import com.wzq.rpc.api.IRpcHelloService;
 import com.wzq.rpc.api.IRpcService;
 import com.wzq.rpc.consumer.proxy.RpcProxy;
+import com.wzq.rpc.provider.RpcServiceImpl;
 
 /**客户端发起调用
  * @author wzq.Jolin

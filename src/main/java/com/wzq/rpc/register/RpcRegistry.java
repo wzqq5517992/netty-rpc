@@ -40,6 +40,7 @@ public class RpcRegistry {
             EventLoopGroup workGroup = new NioEventLoopGroup();
 
             ServerBootstrap bootstrapServer = new ServerBootstrap();
+            //采用链式编程，配置参数
             bootstrapServer.group(bossGroup, workGroup)
                     //主线程轮询
                     .channel(NioServerSocketChannel.class)
